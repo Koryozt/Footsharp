@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Entities.Sports.Football.Enumerators.SouthAmerica;
+namespace ESPNET.Entities.Soccer.LeagueRequeriments.Leagues;
 
 public enum ArgentinianLeagues
 {
@@ -64,5 +64,5 @@ public enum UruguayanLeagues
 
 public enum VenezuelanLeagues
 {
-	PrimeraDivision	= 1
+	PrimeraDivision = 1
 }

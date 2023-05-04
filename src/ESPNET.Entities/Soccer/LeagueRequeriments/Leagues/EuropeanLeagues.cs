@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Entities.Sports.Football.Enumerators.Europa;
+namespace ESPNET.Entities.Soccer.LeagueRequeriments.Leagues;
 
 public enum EnglandLeagues
 {

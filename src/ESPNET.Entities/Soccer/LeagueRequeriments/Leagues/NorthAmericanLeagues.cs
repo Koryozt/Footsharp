@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Entities.Sports.Football.Enumerators.NorthAmerica;
+namespace ESPNET.Entities.Soccer.LeagueRequeriments.Leagues;
 
 public enum UsaLeagues
 {
@@ -16,3 +16,4 @@ public enum MexicanLeagues
 	LigaBBVA,
 	LigaDeExpasion
 }
+

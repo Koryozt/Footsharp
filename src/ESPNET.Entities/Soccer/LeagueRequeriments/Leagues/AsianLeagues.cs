@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Entities.Sports.Football.Enumerators.Asia;
+namespace ESPNET.Entities.Soccer.LeagueRequeriments.Leagues;
 
 public enum JapaneseLeagues
 {
-	J1League = 1, 
+	J1League = 1,
 }
 
 public enum ChineseLeagues
