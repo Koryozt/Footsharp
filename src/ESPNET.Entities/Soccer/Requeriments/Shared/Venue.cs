@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Entities.Soccer.CompetitionRequeriments;
+namespace ESPNET.Entities.Soccer.Requeriments.Shared;
 
 public sealed class Venue
 {
-	public string fullName { get; set; }
-	public Address address { get; set; }
+    public string fullName { get; set; }
+    public Address address { get; set; }
 }

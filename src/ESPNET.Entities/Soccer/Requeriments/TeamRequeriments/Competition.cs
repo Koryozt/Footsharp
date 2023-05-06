@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ESPNET.Entities.Soccer.CompetitionRequeriments;
+using ESPNET.Entities.Soccer.Requeriments.Shared;
 
 namespace ESPNET.Entities.Soccer.TeamRequeriments;
 
@@ -21,5 +22,5 @@ public class Competition
 	public IEnumerable<object> Notes { get; set; }
 	public IEnumerable<Odd> Odds { get; set; }
 	public IEnumerable<object> Broadcasts { get; set; }
-	public CompetitionRequeriments.Status Status { get; set; }
+	public Requeriments.Shared.Status Status { get; set; }
 }
