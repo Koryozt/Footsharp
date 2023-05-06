@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ESPNET.Entities.Soccer.Shared;
 
 namespace ESPNET.Entities.Soccer.TeamRequeriments;
 
@@ -20,13 +21,13 @@ public sealed class Team
 	public string Color { get; set; }
 	public string AlternateColor { get; set; }
 	public bool IsActive { get; set; }
-	public Logo1[] logos { get; set; }
-	public Record record { get; set; }
-	public Athlete[] athletes { get; set; }
-	public Groups groups { get; set; }
-	public Link2[] links { get; set; }
-	public Defaultleague defaultLeague { get; set; }
-	public string leagueAbbrev { get; set; }
-	public Nextevent[] nextEvent { get; set; }
-	public string standingSummary { get; set; }
+	public IEnumerable<Logo> Logos { get; set; }
+	public Record Record { get; set; }
+	public IEnumerable<Athlete> Athletes { get; set; }
+	public Groups Groups { get; set; }
+	public IEnumerable<Link> Links { get; set; }
+	public DefaultLeague DefaultLeague { get; set; }
+	public string LeagueAbbrev { get; set; }
+	public IEnumerable<Nextevent> NextEvent { get; set; }
+	public string StandingSummary { get; set; }
 }

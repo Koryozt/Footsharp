@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Entities.Soccer.LeagueRequeriments;
+namespace ESPNET.Entities.Soccer.AhtleteRequeriments;
 
-public sealed class Logo
+public sealed class Flag
 {
 	public string Href { get; set; }
 	public string Alt { get; set; }
 	public string[] Rel { get; set; }
-	public int Width { get; set; }
-	public int Height { get; set; }
 }
