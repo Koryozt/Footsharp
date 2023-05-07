@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ESPNET.Entities.Soccer.Requeriments.Shared;
 using ESPNET.Models.Soccer.Requeriments.LeagueScoreboardRequeriments.Core;
 
 namespace ESPNET.Models.Soccer;
