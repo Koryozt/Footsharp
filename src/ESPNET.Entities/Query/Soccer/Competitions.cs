@@ -5,15 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ESPNET.Query.Soccer;
+
+// The __ means that in the real endpoint this will be a single underscore.
+// The single _ representes a dot in the url.
+
 public enum Competitions
 {
+	AFC_CHAMPIONS = 1,
 	AFC_CUP,
 	AFC_CUPQ,
 	AFC_SAFF_CHAMPIONSHIP,
 	AFF_CUP,
+	ARG_COPA,
+	BRA_CAMP_CARIOCA,
+	BRA_CAMP_GAUCHO,
+	BRA_CAMP_MINEIRO,
+	BRA_CAMP_PAULISTA,
+	BRA_COPA__DO__BRAZIL,
+	CAF_CHAMPIONS,
 	CAF_CHAMPIONSHIP,
+	CAF_CONFED,
 	CAF_NATIONS,
 	CAF_NATIONS_QUAL,
+	CHI_COPA__CHI,
+	COL_COPA,
 	CONCACAF_CHAMPIONS,
 	CONCACAF_GOLD,
 	CONCACAF_NATIONS_LEAGUE,
@@ -23,6 +38,8 @@ public enum Competitions
 	CONCACAF_WOMENS_CHAMPIONSHIP,
 	CONMEBOL_AMERICA,
 	CONMEBOL_AMERICA_FEMENINA,
+	CONMEBOL_LIBERTADORES,
+	CONMEBOL_SUDAMERICANA,
 	ENG_FA,
 	ENG_LEAGUE__CUP,
 	ENG_TROPHY,
@@ -53,6 +70,7 @@ public enum Competitions
 	MEX_COPA__MX,
 	NED_CUP,
 	POR_TACA_PORTUGAL,
+	RSA_NEDBANK,
 	SCO_CIS,
 	SCO_CHALLENGE,
 	SCO_TENNENTS,
