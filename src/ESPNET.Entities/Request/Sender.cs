@@ -5,49 +5,51 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ESPNET.Models;
+using ESPNET.Query.Soccer;
 
 namespace ESPNET.Request;
 
-public sealed class Sender
+public abstract class Sender
 {
-    public HttpClient Client { get; init; }
-    private HttpMethod Method { get; init; }
-    private Uri Address { get; init; }
-    private const string UserAgent = ".NET.ESPNET.Package";
+	public HttpClient Client { get; init; }
+	private HttpMethod Method { get; init; }
+	private Uri Address { get; init; }
+	private const string UserAgent = "Koryozt.ESPNET";
 
-    public Sender()
-    {
-        Client = new HttpClient();
-        Method = HttpMethod.Get;
-        Address = new Uri("http://site.api.espn.com/apis/site/v2/sports/");
-    }
+	public Sender(Sports sport)
+	{
+		Client = new HttpClient();
+		Method = HttpMethod.Get;
+		Address = new Uri($"http://site.api.espn.com/apis/site/v2/sports/{sport}/");
+	}
 
-    public async Task<string> SendAsync(string endpoint, CancellationToken cancellationToken)
-    {
-        HttpRequestMessage request = new HttpRequestMessage()
-        {
-            RequestUri = new Uri(Address, endpoint),
-            Method = Method,
-        };
+	public async Task<string> SendAsync(string endpoint, CancellationToken cancellationToken)
+	{
+		HttpRequestMessage request = new HttpRequestMessage()
+		{
+			RequestUri = new Uri(Address, endpoint),
+			Method = Method,
+		};
 
-        string content = string.Empty;
+		string content = string.Empty;
 
-        request.Headers.UserAgent.TryParseAdd(UserAgent);
+		request.Headers.UserAgent.TryParseAdd(UserAgent);
 
-        try
-        {
-            HttpResponseMessage response = await Client.SendAsync(request, cancellationToken);
+		try
+		{
+			HttpResponseMessage response = await Client.SendAsync(request, cancellationToken);
 
-            if (response.IsSuccessStatusCode)
-            {
-                content = await response.Content.ReadAsStringAsync(cancellationToken);
-            }
+			if (response.IsSuccessStatusCode)
+			{
+				content = await response.Content.ReadAsStringAsync(cancellationToken);
+			}
 
-            return content;
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
+			return content;
+		}
+		catch (Exception)
+		{
+			throw;
+		}
+	}
 }
