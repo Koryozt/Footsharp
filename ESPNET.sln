@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7C0CD1D8-226C-47E3-AF6A-B9FBD1F7BD9C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESPNET", "src\ESPNET.Entities\ESPNET.csproj", "{8AD0F912-8AAB-4243-97D1-B408F4F7721B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESPNET", "src\ESPNET\ESPNET.csproj", "{E4590CE3-D116-4167-981A-A9FD899E7761}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8AD0F912-8AAB-4243-97D1-B408F4F7721B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AD0F912-8AAB-4243-97D1-B408F4F7721B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AD0F912-8AAB-4243-97D1-B408F4F7721B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AD0F912-8AAB-4243-97D1-B408F4F7721B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4590CE3-D116-4167-981A-A9FD899E7761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4590CE3-D116-4167-981A-A9FD899E7761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4590CE3-D116-4167-981A-A9FD899E7761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4590CE3-D116-4167-981A-A9FD899E7761}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8AD0F912-8AAB-4243-97D1-B408F4F7721B} = {7C0CD1D8-226C-47E3-AF6A-B9FBD1F7BD9C}
+		{E4590CE3-D116-4167-981A-A9FD899E7761} = {7C0CD1D8-226C-47E3-AF6A-B9FBD1F7BD9C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68B1E6CB-16B2-4B71-B48F-98CBDB92FB7B}
