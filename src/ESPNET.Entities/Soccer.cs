@@ -22,6 +22,16 @@ public sealed class Soccer : Sender
 
 	}
 
+	/// <summary>
+	/// Deserialize the JSON response from the ESPN API	scoreboard
+	/// to get the scoreboard of that league.
+	/// </summary>
+	/// <param name="league"></param>
+	/// <param name="division"></param>
+	/// <param name="cancellationToken"></param>
+	/// <returns>
+	///		A SoccerLeagueScoreboard instance.
+	/// </returns>
 	public async Task<SoccerLeagueScoreboard> GetSoccerLeagueScoreboardAsync(
 		Leagues league,
 		int division = 1,
@@ -37,6 +47,16 @@ public sealed class Soccer : Sender
 		return scoreboard;
 	}
 
+	/// <summary>
+	/// Deserialize the JSON response from the ESPN API teams method
+	/// to get the general information of that league.
+	/// </summary>
+	/// <param name="league"></param>
+	/// <param name="division"></param>
+	/// <param name="cancellationToken"></param>
+	/// <returns>
+	///		A SoccerLeague instance.
+	/// </returns>
 	public async Task<SoccerLeague> GetSoccerLeagueAsync(
 	Leagues league,
 	int division = 1,
@@ -52,6 +72,17 @@ public sealed class Soccer : Sender
 		return soccerLeague;
 	}
 
+	/// <summary>
+	/// Deserialize the JSON response from the ESPN API	teams with roster enabled method
+	/// to get a complete information about a specified team.
+	/// </summary>
+	/// <param name="league"></param>
+	/// <param name="id"></param>
+	/// <param name="division"></param>
+	/// <param name="cancellationToken"></param>
+	/// <returns>
+	///		A SoccerTeam instance.
+	/// </returns>
 	public async Task<SoccerTeam> GetSoccerLeagueTeamAsync(
 	Leagues league,
 	int id,
@@ -68,6 +99,16 @@ public sealed class Soccer : Sender
 		return team;
 	}
 
+	/// <summary>
+	/// Deserialize the JSON response from the ESPN API	news method
+	/// to get the most recent news about a league.
+	/// </summary>
+	/// <param name="league"></param>
+	/// <param name="division"></param>
+	/// <param name="cancellationToken"></param>
+	/// <returns>
+	///		A SoccerNews instance.
+	/// </returns>
 	public async Task<SoccerNews> GetSoccerLeagueNewsAsync(
 	Leagues league,
 	int division = 1,
