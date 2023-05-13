@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using ESPNET.Models;
 using ESPNET.Models.Soccer;
 using ESPNET.Query.Soccer;
@@ -37,9 +39,7 @@ public sealed class Soccer : Sender
 		int division = 1,
 		CancellationToken cancellationToken = default)
 	{
-		string method = "scoreboard";
-		string endpoint = $"{league}{division}/{method}/";
-
+		string endpoint = HandleLeagueEndpoint(league, "scoreboard", division);
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
 		SoccerLeagueScoreboard scoreboard = JsonSerializer.Deserialize<SoccerLeagueScoreboard>(request);
@@ -62,8 +62,7 @@ public sealed class Soccer : Sender
 	int division = 1,
 	CancellationToken cancellationToken = default)
 	{
-		string method = "teams";
-		string endpoint = $"{league}{division}/{method}/";
+		string endpoint = HandleLeagueEndpoint(league, "teams", division);
 
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
@@ -89,9 +88,7 @@ public sealed class Soccer : Sender
 	int division = 1,
 	CancellationToken cancellationToken = default)
 	{
-		string method = "teams";
-		string endpoint = $"{league}{division}/{method}/{id}?enable=roster";
-
+		string endpoint = HandleLeagueEndpoint(league, "teams", division, id);
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
 		SoccerTeam team = JsonSerializer.Deserialize<SoccerTeam>(request);
@@ -114,13 +111,24 @@ public sealed class Soccer : Sender
 	int division = 1,
 	CancellationToken cancellationToken = default)
 	{
-		string method = "news";
-		string endpoint = $"{league}{division}/{method}/";
+		string endpoint = HandleLeagueEndpoint(league, "news", division);
 
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
 		SoccerNews news = JsonSerializer.Deserialize<SoccerNews>(request);
 
 		return news;
+	}
+
+	private string HandleLeagueEndpoint(Leagues league, string method, int division, int? id = null)
+	{
+		string mod = league.ToString().Replace("_", ".");
+
+		if (id is not null)
+		{
+			return HttpUtility.UrlEncode($"{mod}.{division}/{method}/{id}?enable=roster");
+		}
+
+		return HttpUtility.UrlEncode($"{mod}.{division}/{method}/");
 	}
 }
