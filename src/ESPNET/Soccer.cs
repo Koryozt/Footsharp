@@ -34,7 +34,7 @@ public sealed class Soccer : Sender
 	/// <returns>
 	///		A SoccerLeagueScoreboard instance.
 	/// </returns>
-	public async Task<SoccerLeagueScoreboard> GetSoccerLeagueScoreboardAsync(
+	public async Task<SoccerScoreboard> GetSoccerLeagueScoreboardAsync(
 		Leagues league,
 		int division = 1,
 		CancellationToken cancellationToken = default)
@@ -42,7 +42,7 @@ public sealed class Soccer : Sender
 		string endpoint = HandleLeagueEndpoint(league, "scoreboard", division);
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerLeagueScoreboard scoreboard = JsonSerializer.Deserialize<SoccerLeagueScoreboard>(request);
+		SoccerScoreboard scoreboard = JsonSerializer.Deserialize<SoccerScoreboard>(request);
 
 		return scoreboard;
 	}
@@ -120,9 +120,57 @@ public sealed class Soccer : Sender
 		return news;
 	}
 
-	private string HandleLeagueEndpoint(Leagues league, string method, int division, int? id = null)
+	public async Task<SoccerScoreboard> GetSoccerCompetitionScoreboardAsync(
+	Competitions comp,
+	int division = 1,
+	CancellationToken cancellationToken = default)
+	{
+		throw new NotImplementedException();
+	}
+
+	public async Task<SoccerNews> GetSoccerCompetitionNewsAsync(
+	Competitions comp,
+	int division = 1,
+	CancellationToken cancellationToken = default)
+	{
+		throw new NotImplementedException();
+	}
+
+	public async Task<SoccerTeam> GetSoccerCompetitionTeamAsync(
+	Competitions comp,
+	int id,
+	int division = 1,
+	CancellationToken cancellationToken = default)
+	{
+		throw new NotImplementedException();
+	}
+
+	public async Task<SoccerLeague> GetSoccerCompetitionAsync(
+	Competitions comp,
+	int division = 1,
+	CancellationToken cancellationToken = default)
+	{
+		throw new NotImplementedException();
+	}
+
+private string HandleLeagueEndpoint(Leagues league, string method, int division, int? id = null)
 	{
 		string mod = league.ToString().Replace("_", ".");
+
+		if (id is not null)
+		{
+			return HttpUtility.UrlEncode($"{mod}.{division}/{method}/{id}?enable=roster");
+		}
+
+		return HttpUtility.UrlEncode($"{mod}.{division}/{method}/");
+	}
+
+	private string HandleCompetitionEndpoint(Competitions competitions, string method, int division, int? id = null)
+	{
+		string mod = competitions
+			.ToString()
+			.Replace("_", ".")
+			.Replace("x", "_");
 
 		if (id is not null)
 		{

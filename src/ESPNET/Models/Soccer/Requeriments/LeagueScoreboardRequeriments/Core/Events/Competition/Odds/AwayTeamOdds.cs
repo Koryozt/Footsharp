@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ESPNET.Models.Soccer.Requeriments.Shared;
-using static ESPNET.Models.Soccer.SoccerLeagueScoreboard;
+using static ESPNET.Models.Soccer.SoccerScoreboard;
 
 namespace ESPNET.Models.Soccer.Requeriments.LeagueScoreboardRequeriments.Core.Events.Competition.Odds;
 

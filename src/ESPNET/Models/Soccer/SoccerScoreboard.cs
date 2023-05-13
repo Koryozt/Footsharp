@@ -9,7 +9,7 @@ namespace ESPNET.Models.Soccer;
 
 #pragma warning disable
 
-public sealed class SoccerLeagueScoreboard
+public sealed class SoccerScoreboard
 {
     public IEnumerable<League> Leagues { get; set; }
     public Season Season { get; set; }
