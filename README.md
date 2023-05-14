@@ -25,4 +25,4 @@ SoccerTeam team = await soccer.GetSoccerLeagueTeamAsync(Leagues.ENG, manUtdId);
 
 ## Extra
 
-If you want to help with this package, send a message to my discord `zxt#0000`!
+If you want to help with this package, send a message to my discord `zxt#8196`!
