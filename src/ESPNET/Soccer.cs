@@ -11,17 +11,17 @@ using ESPNET.Models;
 using ESPNET.Models.Soccer;
 using ESPNET.Query.Soccer;
 using ESPNET.Request;
+using Newtonsoft.Json;
 
 namespace ESPNET;
 
-public sealed class Soccer : Sender
+public sealed class Soccer
 {
 	private Sender Sender { get; init; }
 
-	public Soccer() : 
-		base(Sports.Soccer)
+	public Soccer()
 	{
-
+		Sender = new Sender(Sports.Soccer);
 	}
 
 	/// <summary>
@@ -42,7 +42,7 @@ public sealed class Soccer : Sender
 		string endpoint = HandleLeagueEndpoint(league, "scoreboard", division);
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerScoreboard scoreboard = JsonSerializer.Deserialize<SoccerScoreboard>(request);
+		SoccerScoreboard scoreboard = JsonConvert.DeserializeObject<SoccerScoreboard>(request);
 
 		return scoreboard;
 	}
@@ -66,7 +66,7 @@ public sealed class Soccer : Sender
 
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerLeague soccerLeague = JsonSerializer.Deserialize<SoccerLeague>(request);
+		SoccerLeague soccerLeague = JsonConvert.DeserializeObject<SoccerLeague>(request);
 
 		return soccerLeague;
 	}
@@ -91,7 +91,7 @@ public sealed class Soccer : Sender
 		string endpoint = HandleLeagueEndpoint(league, "teams", division, id);
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerTeam team = JsonSerializer.Deserialize<SoccerTeam>(request);
+		SoccerTeam team = JsonConvert.DeserializeObject<SoccerTeam>(request);
 
 		return team;
 	}
@@ -115,7 +115,7 @@ public sealed class Soccer : Sender
 
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerNews news = JsonSerializer.Deserialize<SoccerNews>(request);
+		SoccerNews news = JsonConvert.DeserializeObject<SoccerNews>(request);
 
 		return news;
 	}
@@ -134,7 +134,7 @@ public sealed class Soccer : Sender
 		string endpoint = HandleCompetitionEndpoint(comp, "scoreboard");
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerScoreboard scoreboard = JsonSerializer.Deserialize<SoccerScoreboard>(request);
+		SoccerScoreboard scoreboard = JsonConvert.DeserializeObject<SoccerScoreboard>(request);
 
 		return scoreboard;
 	}
@@ -153,7 +153,7 @@ public sealed class Soccer : Sender
 		string endpoint = HandleCompetitionEndpoint(comp, "news");
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerNews news = JsonSerializer.Deserialize<SoccerNews>(request);
+		SoccerNews news = JsonConvert.DeserializeObject<SoccerNews>(request);
 
 		return news;
 	}
@@ -174,7 +174,7 @@ public sealed class Soccer : Sender
 		string endpoint = HandleCompetitionEndpoint(comp, "teams", id);
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerTeam team = JsonSerializer.Deserialize<SoccerTeam>(request);
+		SoccerTeam team = JsonConvert.DeserializeObject<SoccerTeam>(request);
 
 		return team;
 	}
@@ -193,7 +193,7 @@ public sealed class Soccer : Sender
 		string endpoint = HandleCompetitionEndpoint(comp, "teams");
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerLeague league = JsonSerializer.Deserialize<SoccerLeague>(request);
+		SoccerLeague league = JsonConvert.DeserializeObject<SoccerLeague>(request);
 
 		return league;
 	}
@@ -210,14 +210,14 @@ public sealed class Soccer : Sender
 	/// </returns>
 	private string HandleLeagueEndpoint(Leagues league, string method, int division, int? id = null)
 	{
-		string mod = league.ToString().Replace("_", ".");
+		string mod = league.ToString().ToLower();
 
 		if (id is not null)
 		{
-			return HttpUtility.UrlEncode($"{mod}.{division}/{method}/{id}?enable=roster");
+			return $"{mod}.{division}/{method}/{id}?enable=roster";
 		}
 
-		return HttpUtility.UrlEncode($"{mod}.{division}/{method}/");
+		return $"{mod}.{division}/{method}";
 	}
 
 	/// <summary>
@@ -234,13 +234,13 @@ public sealed class Soccer : Sender
 		string mod = competitions
 			.ToString()
 			.Replace("_", ".")
-			.Replace("x", "_");
+			.Replace("x", "_").ToLower();
 
 		if (id is not null)
 		{
-			return HttpUtility.UrlEncode($"{mod}/{method}/{id}?enable=roster");
+			return $"{mod}/{method}/{id}?enable=roster";
 		}
 
-		return HttpUtility.UrlEncode($"{mod}/{method}/");
+		return $"{mod}/{method}";
 	}
 }

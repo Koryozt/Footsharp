@@ -10,7 +10,7 @@ using ESPNET.Query.Soccer;
 
 namespace ESPNET.Request;
 
-public abstract class Sender
+public class Sender
 {
 	public HttpClient Client { get; init; }
 	private HttpMethod Method { get; init; }
@@ -21,7 +21,7 @@ public abstract class Sender
 	{
 		Client = new HttpClient();
 		Method = HttpMethod.Get;
-		Address = new Uri($"http://site.api.espn.com/apis/site/v2/sports/{sport}/");
+		Address = new Uri($"http://site.api.espn.com/apis/site/v2/sports/{sport.ToString().ToLower()}/");
 	}
 
 	public async Task<string> SendAsync(string endpoint, CancellationToken cancellationToken)
@@ -39,6 +39,8 @@ public abstract class Sender
 		try
 		{
 			HttpResponseMessage response = await Client.SendAsync(request, cancellationToken);
+
+			Console.WriteLine(response.IsSuccessStatusCode);
 
 			if (response.IsSuccessStatusCode)
 			{
