@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Models.Soccer.Requeriments.AhtleteRequeriments;
+namespace ESPNET.Models.Soccer.Requeriments.AthleteRequeriments;
 
-public sealed class Headshot
+public sealed class AthleteFlag
 {
     public string Href { get; set; }
     public string Alt { get; set; }
+    public string[] Rel { get; set; }
 }

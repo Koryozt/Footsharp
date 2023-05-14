@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using ESPNET.Models.Soccer.Requeriments.LeagueScoreboardRequeriments.Core.Leagues;
 using ESPNET.Models.Soccer.Requeriments.Shared;
 
 namespace ESPNET.Models.Soccer.Requeriments.LeagueScoreboardRequeriments.Core;
@@ -21,6 +22,7 @@ public sealed class League
     public bool CalendarIsWhitelist { get; set; }
     public string CalendarStartDate { get; set; }
     public string CalendarEndDate { get; set; }
-    public IEnumerable<string> Calendar { get; set; }
+	public IEnumerable<LeagueCalendar> Calendar { get; set; }
+
 
 }

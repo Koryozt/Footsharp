@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Models.Soccer.Requeriments.AhtleteRequeriments;
+namespace ESPNET.Models.Soccer.Requeriments.AthleteRequeriments;
 
-public sealed class Position
+public sealed class AthletePosition
 {
     public string ID { get; set; }
     public string Name { get; set; }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Models.Soccer.Requeriments.AhtleteRequeriments;
+namespace ESPNET.Models.Soccer.Requeriments.AthleteRequeriments;
 
-public sealed class Events
+public sealed class AthleteSeason
 {
 }

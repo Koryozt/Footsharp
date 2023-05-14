@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESPNET.Models.Soccer.Requeriments.AhtleteRequeriments;
+namespace ESPNET.Models.Soccer.Requeriments.AthleteRequeriments;
 
-public sealed class BirthPlace
+public sealed class AthleteBirthPlace
 {
     public string Country { get; set; }
     public string City { get; set; }
