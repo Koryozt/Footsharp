@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7C0CD1D8-226
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESPNET", "src\ESPNET\ESPNET.csproj", "{E4590CE3-D116-4167-981A-A9FD899E7761}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESPNET.Tests", "ESPNET.Tests\ESPNET.Tests.csproj", "{FC97C8A5-7EA5-4706-9765-68CC22A76F46}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,17 +17,12 @@ Global
 		{E4590CE3-D116-4167-981A-A9FD899E7761}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4590CE3-D116-4167-981A-A9FD899E7761}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4590CE3-D116-4167-981A-A9FD899E7761}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC97C8A5-7EA5-4706-9765-68CC22A76F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC97C8A5-7EA5-4706-9765-68CC22A76F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC97C8A5-7EA5-4706-9765-68CC22A76F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC97C8A5-7EA5-4706-9765-68CC22A76F46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E4590CE3-D116-4167-981A-A9FD899E7761} = {7C0CD1D8-226C-47E3-AF6A-B9FBD1F7BD9C}
-		{FC97C8A5-7EA5-4706-9765-68CC22A76F46} = {7C0CD1D8-226C-47E3-AF6A-B9FBD1F7BD9C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68B1E6CB-16B2-4B71-B48F-98CBDB92FB7B}
