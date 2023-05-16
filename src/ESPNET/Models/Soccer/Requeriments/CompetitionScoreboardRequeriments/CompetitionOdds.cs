@@ -9,7 +9,7 @@ namespace ESPNET.Models.Soccer.Requeriments.CompetitionScoreboardRequeriments;
 
 public sealed class CompetitionOdds
 {
-	public OddsProvider provider { get; set; }
+	public OddsProvider Provider { get; set; }
 	public TeamOdds AwayTeamOdds { get; set; }
 	public TeamOdds HomeTeamOdds { get; set; }
 	public OddsDraw DrawOdds { get; set; }
