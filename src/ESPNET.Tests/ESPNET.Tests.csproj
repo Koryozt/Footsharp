@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ESPNET\ESPNET.csproj" />
+    <ProjectReference Include="..\ESPNET\ESPNET.csproj" />
   </ItemGroup>
 
 </Project>

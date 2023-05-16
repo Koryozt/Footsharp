@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ESPNET.Models.Soccer.Requeriments.CompetitionRequeriments;
 
-
 public sealed class Odd
 {
-    AwayTeamOdds AwayTeamOdds { get; set; }
-    HomeTeamOdds HomeTeamOdds { get; set; }
+	public TeamOdds AwayTeamOdds { get; set; }
+	public TeamOdds HomeTeamOdds { get; set; }
 }

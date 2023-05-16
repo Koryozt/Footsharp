@@ -8,6 +8,6 @@ namespace ESPNET.Models.Soccer.Requeriments.Shared;
 
 public sealed class Address
 {
-    public string city { get; set; }
-    public string country { get; set; }
+    public string City { get; set; }
+    public string Country { get; set; }
 }

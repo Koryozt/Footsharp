@@ -22,7 +22,7 @@ public class SoccerTest_Scoreboard
 	[Fact]
 	public async Task CompetitionScoreboard_NotNull_ShouldPass()
 	{
-		SoccerScoreboard score = await Soccer.GetSoccerCompetitionScoreboardAsync(Competitions.UEFA_CHAMPIONS);
+		SoccerLeagueScoreboard score = await Soccer.GetSoccerCompetitionScoreboardAsync(Competitions.UEFA_CHAMPIONS);
 
 		Assert.NotNull(score);
 	}
@@ -30,7 +30,7 @@ public class SoccerTest_Scoreboard
 	[Fact]
 	public async Task LeagueScoreboard_LeaguesNotEmpty_ShouldPass()
 	{
-		SoccerScoreboard score = await Soccer.GetSoccerLeagueScoreboardAsync(Leagues.ENG);
+		SoccerLeagueScoreboard score = await Soccer.GetSoccerLeagueScoreboardAsync(Leagues.ENG);
 
 		output.WriteLine(score.Leagues.First().Abbreviation);
 
@@ -40,7 +40,7 @@ public class SoccerTest_Scoreboard
 	[Fact]
 	public async Task LeagueScoreboard_ContainsValidData_ShouldPass()
 	{
-		SoccerScoreboard score = await Soccer.GetSoccerLeagueScoreboardAsync(Leagues.ENG);
+		SoccerLeagueScoreboard score = await Soccer.GetSoccerLeagueScoreboardAsync(Leagues.ENG);
 
 		int? year = score.Season.Year;
 
