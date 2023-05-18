@@ -127,14 +127,14 @@ public sealed class Soccer
 	/// <param name="comp"></param>
 	/// <param name="cancellationToken"></param>
 	/// <returns></returns>
-	public async Task<SoccerLeagueScoreboard> GetSoccerCompetitionScoreboardAsync(
+	public async Task<SoccerCompetitionScoreboard> GetSoccerCompetitionScoreboardAsync(
 	Competitions comp,
 	CancellationToken cancellationToken = default)
 	{
 		string endpoint = HandleCompetitionEndpoint(comp, "scoreboard");
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerLeagueScoreboard scoreboard = JsonConvert.DeserializeObject<SoccerLeagueScoreboard>(request);
+		SoccerCompetitionScoreboard scoreboard = JsonConvert.DeserializeObject<SoccerCompetitionScoreboard>(request);
 
 		return scoreboard;
 	}

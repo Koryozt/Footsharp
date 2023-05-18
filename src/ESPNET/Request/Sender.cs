@@ -40,11 +40,10 @@ public class Sender
 		{
 			HttpResponseMessage response = await Client.SendAsync(request, cancellationToken);
 
-			Console.WriteLine(response.IsSuccessStatusCode);
-
 			if (response.IsSuccessStatusCode)
 			{
 				content = await response.Content.ReadAsStringAsync(cancellationToken);
+				content = content.Replace(".0", "");
 			}
 
 			return content;

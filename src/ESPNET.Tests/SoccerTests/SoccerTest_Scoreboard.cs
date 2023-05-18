@@ -22,7 +22,7 @@ public class SoccerTest_Scoreboard
 	[Fact]
 	public async Task CompetitionScoreboard_NotNull_ShouldPass()
 	{
-		SoccerLeagueScoreboard score = await Soccer.GetSoccerCompetitionScoreboardAsync(Competitions.UEFA_CHAMPIONS);
+		SoccerCompetitionScoreboard score = await Soccer.GetSoccerCompetitionScoreboardAsync(Competitions.UEFA_CHAMPIONS);
 
 		Assert.NotNull(score);
 	}
