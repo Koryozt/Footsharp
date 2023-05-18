@@ -1,4 +1,5 @@
 ﻿using Footsharp;
+using Footsharp.Objects;
 using Footsharp.Query.Soccer;
 
 namespace Footsharp.Tests.SoccerTests;
@@ -16,7 +17,7 @@ public class SoccerTest_News
 	[Fact]
 	public async Task CompetitionsNews_NotNull_ShouldPass()
 	{
-		SoccerNews news = await Soccer.GetSoccerCompetitionNewsAsync(Competitions.UEFA_CHAMPIONS);
+		News news = await Soccer.GetSoccerCompetitionNewsAsync(Competitions.UEFA_CHAMPIONS);
 
 		Assert.NotNull(news);
 	}
@@ -24,7 +25,7 @@ public class SoccerTest_News
 	[Fact]
 	public async Task LeagueNews_LinkNotNull_ShouldPass()
 	{
-		SoccerNews news = await Soccer.GetSoccerLeagueNewsAsync(Leagues.ENG);
+		News news = await Soccer.GetSoccerLeagueNewsAsync(Leagues.ENG);
 
 		Assert.NotNull(news.Link);
 	}
@@ -32,7 +33,7 @@ public class SoccerTest_News
 	[Fact]
 	public async Task LeagueNews_ValidArticles_ShouldPass()
 	{
-		SoccerNews news = await Soccer.GetSoccerLeagueNewsAsync(Leagues.ENG);
+		News news = await Soccer.GetSoccerLeagueNewsAsync(Leagues.ENG);
 
 		Assert.NotEmpty(news.Articles);
 	}

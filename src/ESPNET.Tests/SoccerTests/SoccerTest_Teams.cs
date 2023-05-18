@@ -1,4 +1,5 @@
 ﻿using Footsharp;
+using Footsharp.Objects;
 using Footsharp.Query.Soccer;
 
 namespace Footsharp.Tests.SoccerTests;

@@ -1,4 +1,5 @@
 ﻿using Footsharp;
+using Footsharp.Objects;
 using Footsharp.Query.Soccer;
 
 namespace Footsharp.Tests.SoccerTests;
@@ -14,35 +15,35 @@ public class SoccerTest_LeagueAndCompetition
 	}
 
 	[Fact]
-	public async Task SoccerLeague_GetLeagueInformation_ShouldPass()
+	public async Task League_GetLeagueInformation_ShouldPass()
 	{
-		SoccerCompetition competition = await Soccer.GetSoccerLeagueAsync(Leagues.ENG);
+		League league = await Soccer.GetSoccerLeagueAsync(Leagues.ENG);
+
+		Assert.NotNull(league);
+	}
+
+	[Fact]
+	public async Task Competition_GetLeagueInformation_ShouldPass()
+	{
+		Competition competition = await Soccer.GetSoccerCompetitionAsync(Competitions.UEFA_CHAMPIONS);
 
 		Assert.NotNull(competition);
 	}
 
 	[Fact]
-	public async Task SoccerCompetition_GetLeagueInformation_ShouldPass()
+	public async Task League_LeaguesNotEmpty_ShouldPass()
 	{
-		SoccerCompetition competition = await Soccer.GetSoccerCompetitionAsync(Competitions.UEFA_CHAMPIONS);
+		League league = await Soccer.GetSoccerLeagueAsync(Leagues.ENG);
 
-		Assert.NotNull(competition);
+		Assert.NotEmpty(league.Sports);
+		Assert.NotEmpty(league.Sports.First().Leagues);
 	}
 
 	[Fact]
-	public async Task SoccerLeague_LeaguesNotEmpty_ShouldPass()
+	public async Task League_GetLeagueInformation_InvalidDivision_ShoulReturnNull()
 	{
-		SoccerCompetition competition = await Soccer.GetSoccerLeagueAsync(Leagues.ENG);
+		League league = await Soccer.GetSoccerLeagueAsync(Leagues.ENG, 10);
 
-		Assert.NotEmpty(competition.Sports);
-		Assert.NotEmpty(competition.Sports.First().Leagues);
-	}
-
-	[Fact]
-	public async Task SoccerLeague_GetLeagueInformation_InvalidDivision_ShoulReturnNull()
-	{
-		SoccerCompetition competition = await Soccer.GetSoccerLeagueAsync(Leagues.ENG, 10);
-
-		Assert.Null(competition);
+		Assert.Null(league);
 	}
 }

@@ -25,9 +25,7 @@ public class SoccerTest_Scoreboard
 	[Fact]
 	public async Task LeagueScoreboard_LeaguesNotEmpty_ShouldPass()
 	{
-		LeagueScoreboard score = await Soccer.GetSoccerLeagueScoreboardAsync(Leagues.ENG);
-
-		output.WriteLine(score.Leagues.First().Abbreviation);
+        LeagueScoreboard score = await Soccer.GetSoccerLeagueScoreboardAsync(Query.Soccer.Leagues.ENG);
 
 		Assert.NotEmpty(score.Leagues);
 	}
@@ -35,7 +33,7 @@ public class SoccerTest_Scoreboard
 	[Fact]
 	public async Task LeagueScoreboard_ContainsValidData_ShouldPass()
 	{
-		LeagueScoreboard score = await Soccer.GetSoccerLeagueScoreboardAsync(Leagues.ENG);
+        LeagueScoreboard score = await Soccer.GetSoccerLeagueScoreboardAsync(Query.Soccer.Leagues.ENG);
 
 		int? year = score.Season.Year;
 
