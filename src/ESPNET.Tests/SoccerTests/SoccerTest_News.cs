@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ESPNET.Models.Soccer;
-using ESPNET.Query.Soccer;
-using Xunit.Abstractions;
+﻿using Footsharp;
+using Footsharp.Query.Soccer;
 
-namespace ESPNET.Tests.SoccerTests;
+namespace Footsharp.Tests.SoccerTests;
 
 public class SoccerTest_News
 {

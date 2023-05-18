@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.Json;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
-using ESPNET.Models;
-using ESPNET.Models.Soccer;
-using ESPNET.Query.Soccer;
-using ESPNET.Request;
+using Footsharp.Objects;
+using Footsharp.Query.Soccer;
+using Footsharp.Request;
 using Newtonsoft.Json;
 
-namespace ESPNET;
+namespace Footsharp;
 
 public sealed class Soccer
 {
@@ -21,7 +13,7 @@ public sealed class Soccer
 
 	public Soccer()
 	{
-		Sender = new Sender(Sports.Soccer);
+		Sender = new Sender();
 	}
 
 	/// <summary>
@@ -34,15 +26,15 @@ public sealed class Soccer
 	/// <returns>
 	///		A SoccerLeagueScoreboard instance.
 	/// </returns>
-	public async Task<SoccerLeagueScoreboard> GetSoccerLeagueScoreboardAsync(
-		Leagues league,
+	public async Task<LeagueScoreboard> GetSoccerLeagueScoreboardAsync(
+		Query.Soccer.Leagues league,
 		int division = 1,
 		CancellationToken cancellationToken = default)
 	{
 		string endpoint = HandleLeagueEndpoint(league, "scoreboard", division);
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerLeagueScoreboard scoreboard = JsonConvert.DeserializeObject<SoccerLeagueScoreboard>(request);
+		LeagueScoreboard scoreboard = JsonConvert.DeserializeObject<LeagueScoreboard>(request);
 
 		return scoreboard;
 	}
@@ -57,8 +49,8 @@ public sealed class Soccer
 	/// <returns>
 	///		A SoccerLeague instance.
 	/// </returns>
-	public async Task<SoccerCompetition> GetSoccerLeagueAsync(
-	Leagues league,
+	public async Task<League> GetSoccerLeagueAsync(
+	Query.Soccer.Leagues league,
 	int division = 1,
 	CancellationToken cancellationToken = default)
 	{
@@ -66,7 +58,7 @@ public sealed class Soccer
 
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerCompetition soccerLeague = JsonConvert.DeserializeObject<SoccerCompetition>(request);
+		League soccerLeague = JsonConvert.DeserializeObject<League>(request);
 
 		return soccerLeague;
 	}
@@ -83,7 +75,7 @@ public sealed class Soccer
 	///		A SoccerTeam instance.
 	/// </returns>
 	public async Task<SoccerTeam> GetSoccerLeagueTeamAsync(
-	Leagues league,
+	Query.Soccer.Leagues league,
 	int id,
 	int division = 1,
 	CancellationToken cancellationToken = default)
@@ -106,8 +98,8 @@ public sealed class Soccer
 	/// <returns>
 	///		A SoccerNews instance.
 	/// </returns>
-	public async Task<SoccerNews> GetSoccerLeagueNewsAsync(
-	Leagues league,
+	public async Task<News> GetSoccerLeagueNewsAsync(
+	Query.Soccer.Leagues league,
 	int division = 1,
 	CancellationToken cancellationToken = default)
 	{
@@ -115,7 +107,7 @@ public sealed class Soccer
 
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerNews news = JsonConvert.DeserializeObject<SoccerNews>(request);
+		News news = JsonConvert.DeserializeObject<News>(request);
 
 		return news;
 	}
@@ -127,14 +119,14 @@ public sealed class Soccer
 	/// <param name="comp"></param>
 	/// <param name="cancellationToken"></param>
 	/// <returns></returns>
-	public async Task<SoccerCompetitionScoreboard> GetSoccerCompetitionScoreboardAsync(
+	public async Task<CompetitionScoreboard> GetSoccerCompetitionScoreboardAsync(
 	Competitions comp,
 	CancellationToken cancellationToken = default)
 	{
 		string endpoint = HandleCompetitionEndpoint(comp, "scoreboard");
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerCompetitionScoreboard scoreboard = JsonConvert.DeserializeObject<SoccerCompetitionScoreboard>(request);
+		CompetitionScoreboard scoreboard = JsonConvert.DeserializeObject<CompetitionScoreboard>(request);
 
 		return scoreboard;
 	}
@@ -146,14 +138,14 @@ public sealed class Soccer
 	/// <param name="comp"></param>
 	/// <param name="cancellationToken"></param>
 	/// <returns></returns>
-	public async Task<SoccerNews> GetSoccerCompetitionNewsAsync(
+	public async Task<News> GetSoccerCompetitionNewsAsync(
 	Competitions comp,
 	CancellationToken cancellationToken = default)
 	{
 		string endpoint = HandleCompetitionEndpoint(comp, "news");
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerNews news = JsonConvert.DeserializeObject<SoccerNews>(request);
+		News news = JsonConvert.DeserializeObject<News>(request);
 
 		return news;
 	}
@@ -186,14 +178,14 @@ public sealed class Soccer
 	/// <param name="comp"></param>
 	/// <param name="cancellationToken"></param>
 	/// <returns></returns>
-	public async Task<SoccerCompetition> GetSoccerCompetitionAsync(
+	public async Task<Competition> GetSoccerCompetitionAsync(
 	Competitions comp,
 	CancellationToken cancellationToken = default)
 	{
 		string endpoint = HandleCompetitionEndpoint(comp, "teams");
 		var request = await Sender.SendAsync(endpoint, cancellationToken);
 
-		SoccerCompetition league = JsonConvert.DeserializeObject<SoccerCompetition>(request);
+		Competition league = JsonConvert.DeserializeObject<Competition>(request);
 
 		return league;
 	}
@@ -208,7 +200,7 @@ public sealed class Soccer
 	/// <returns>
 	///		A string with the valid endpoint.
 	/// </returns>
-	private string HandleLeagueEndpoint(Leagues league, string method, int division, int? id = null)
+	private static string HandleLeagueEndpoint(Leagues league, string method, int division, int? id = null)
 	{
 		string mod = league.ToString().ToLower();
 
@@ -229,7 +221,7 @@ public sealed class Soccer
 	/// <returns>
 	///		A string with the valid endpoint.
 	/// </returns>
-	private string HandleCompetitionEndpoint(Competitions competitions, string method, int? id = null)
+	private static string HandleCompetitionEndpoint(Competitions competitions, string method, int? id = null)
 	{
 		string mod = competitions
 			.ToString()

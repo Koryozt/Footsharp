@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ESPNET.Query.Soccer;
+﻿namespace Footsharp.Query.Soccer;
 
 // The __ means that in the real endpoint this will be a single underscore.
 // The single _ representes a dot in the url.

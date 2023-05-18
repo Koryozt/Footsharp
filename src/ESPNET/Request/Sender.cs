@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using ESPNET.Models;
-using ESPNET.Query.Soccer;
 
-namespace ESPNET.Request;
+namespace Footsharp.Request;
 
 public class Sender
 {
@@ -17,11 +12,11 @@ public class Sender
 	private Uri Address { get; init; }
 	private const string UserAgent = "Koryozt.ESPNET";
 
-	public Sender(Sports sport)
+	public Sender()
 	{
 		Client = new HttpClient();
 		Method = HttpMethod.Get;
-		Address = new Uri($"http://site.api.espn.com/apis/site/v2/sports/{sport.ToString().ToLower()}/");
+		Address = new Uri($"http://site.api.espn.com/apis/site/v2/sports/soccer/");
 	}
 
 	public async Task<string> SendAsync(string endpoint, CancellationToken cancellationToken)
