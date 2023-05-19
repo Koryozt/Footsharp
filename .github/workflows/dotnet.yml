@@ -25,6 +25,6 @@ jobs:
     - name: Install Http methods dependency
       run: dotnet add ./src/Footsharp/ package Microsoft.Extensions.Http --version 7.0.0
     - name: Build package
-      run: dotnet build
+      run: dotnet build --project ./src/Footsharp/ --configuration Release 
     - name: Test
       run: dotnet test --project ./src/Footsharp.Tests/ --verbosity normal
