@@ -1,28 +1,32 @@
-# ESPNET
+# Footsharp
 
-## What is ESPNET?
+## What is Footsharp?
 
-ESPNET is a C# class library project (and future nuget package) to interact with the ESPN API from .NET, retrieving and deserializing all the information that you need into simple classes to handle the data in a more flexible way and to do anything you want with that information. Also, ESPNET is built with .NET 7 and C# 11.
+Footsharp is a C# class library project and nuget package to get information in real time about any kind of soccer information, like league or championships matches, scoreboard, news, teams and players. 
+These information is obtained by the ESPN API, Footsharp deserialize the response for a better usage for you!
 
-## Project status
-We're currently developing the soccer methods and testing them for a correct use; we're discussing about implementing a Dictionary with the teams and their identifier for the API request.
-The next step will be implementing the Baseball models and requests.
+<hr />
 
 ## Usage examples
 
-##### Retrieve soccer team information.
-Let's get the Manchester United team data with the following code example
+##### Retrieve Manchester United team information.
 ```cs
-...
-
 Soccer soccer = new();
 int manUtdId = 360;
 
 SoccerTeam team = await soccer.GetSoccerLeagueTeamAsync(Leagues.ENG, manUtdId); 
+```
+##### Get scoreboard from the UEFA Champions League.
 
-...
+```cs
+Soccer soccer = new();
+
+CompetitionScoreboard scoreboard = await soccer.GetSoccerCompetitionScoreboardAsync(Competitions.UEFA_CHAMPIONS);
+
 ```
 
-## Extra
+## Package details
 
-If you want to help with this package, send a message to my discord `zxt#8196`!
+Name: Koryozt.Footsharp
+.NET version: .NET 7
+Package version: 1.0.0
