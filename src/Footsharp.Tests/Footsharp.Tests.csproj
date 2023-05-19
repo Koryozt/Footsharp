@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ESPNET\Footsharp.csproj" />
+    <ProjectReference Include="..\Footsharp\Footsharp.csproj" />
   </ItemGroup>
 
 </Project>

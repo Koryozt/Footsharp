@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Footsharp.Exceptions;
 
 namespace Footsharp.Request;
 
@@ -11,6 +12,7 @@ public class Sender
 	private HttpMethod Method { get; init; }
 	private Uri Address { get; init; }
 	private const string UserAgent = "Koryozt.ESPNET";
+	private const string TrailingDecimal = ".0";
 
 	public Sender()
 	{
@@ -27,7 +29,7 @@ public class Sender
 			Method = Method,
 		};
 
-		string content = string.Empty;
+		string content;
 
 		request.Headers.UserAgent.TryParseAdd(UserAgent);
 
@@ -35,15 +37,17 @@ public class Sender
 		{
 			HttpResponseMessage response = await Client.SendAsync(request, cancellationToken);
 
-			if (response.IsSuccessStatusCode)
+			if (!response.IsSuccessStatusCode)
 			{
-				content = await response.Content.ReadAsStringAsync(cancellationToken);
-				content = content.Replace(".0", "");
+				throw new LeagueOrCompetitionNotFoundException();
 			}
+
+			content = await response.Content.ReadAsStringAsync(cancellationToken);
+			content = content.Replace(TrailingDecimal, string.Empty);
 
 			return content;
 		}
-		catch (Exception)
+		catch (InvalidSenderRequestException)
 		{
 			throw;
 		}
