@@ -21,9 +21,9 @@ jobs:
       with:
         dotnet-version: 7.0.x
     - name: Install newtonsoft dependency
-      run: dotnet add package Newtonsoft.Json --version 9.0.1 --project ./src/Footsharp/
+      run: dotnet add ./src/Footsharp/ package Newtonsoft.Json --version 9.0.1
     - name: Install Http methods dependency
-      run: dotnet add package Microsoft.Extensions.Http --version 7.0.0 --project ./src/Footsharp/
+      run: dotnet add ./src/Footsharp/ package Microsoft.Extensions.Http --version 7.0.0
     - name: Restore package dependencies
       run: dotnet restore --project ./src/Footsharp/
     - name: Build package
